@@ -9,6 +9,7 @@ namespace Model
         public Entity()
         {
             Audit = new List<Audit>();
+            Id = new Guid();
         }
 
         [Key]

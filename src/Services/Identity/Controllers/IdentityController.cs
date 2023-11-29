@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 
 namespace Identity.Controllers
 {
-    [Route("api/identity")]
     public class IdentityController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;

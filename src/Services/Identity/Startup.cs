@@ -1,6 +1,6 @@
-﻿using Identity.Configuration;
+﻿using Base.Configuration;
 using Base.Configuration.Identity;
-using Base.Configuration;
+using Identity.Configuration;
 
 namespace Identity
 {
@@ -39,8 +39,6 @@ namespace Identity
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseHttpsRedirection();
-
             app.UseSwaggerConfiguration();
 
             app.UseApiConfiguration(env);
