@@ -13,25 +13,25 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Staging"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS - PRD": {
+    "IIS PRD": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DesafioBalta.Services.Identity": {
+    "DesafioBalta.Services.Template": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:7121;http://localhost:5121",
+      "applicationUrl": "https://localhost:7144;http://localhost:5144",
       "dotnetRunMessages": true
     },
     "Docker": {
@@ -51,8 +51,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:39576",
-      "sslPort": 44393
+      "applicationUrl": "http://localhost:42871",
+      "sslPort": 44359
     }
   }
 }
