@@ -1,28 +1,41 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Model
 {
-    public class Entity
+    public abstract class Entity
     {
         public Entity()
         {
+            Id = Guid.NewGuid();
+            IsDeleted = false;
             Audit = new List<Audit>();
-            Id = new Guid();
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public bool IsDeleted { get; set; }
-
-        [JsonIgnore]
-        public List<Audit>? Audit { get; set; }
+        public bool IsDeleted { get; private set; }
 
         [JsonIgnore]
-        [NotMapped]
-        public string? SerializedObject { get; set; }
+        public List<Audit>? Audit { get; private set; }
+
+        public virtual string SerializedEntity()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+
+        public void DeleteEntity()
+        {
+            IsDeleted = true;
+        }
+
+        public void AddAudit(Audit audit)
+        {
+            Audit.Add(audit);
+        }
 
         public override bool Equals(object? obj)
         {

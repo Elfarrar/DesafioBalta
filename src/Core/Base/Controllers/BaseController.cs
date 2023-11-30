@@ -36,7 +36,7 @@ namespace Base.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            objeto.SerializedObject = JsonSerializer.Serialize(objeto);
+            //objeto.SerializedObject = JsonSerializer.Serialize(objeto);
 
             var result = await _db.Create(objeto);
 
@@ -49,7 +49,7 @@ namespace Base.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            objeto.SerializedObject = JsonSerializer.Serialize(objeto);
+            //objeto.SerializedObject = JsonSerializer.Serialize(objeto);
 
             var result = await _db.Update(objeto);
 
@@ -61,9 +61,8 @@ namespace Base.Controllers
         public virtual async Task<ActionResult> Delete(Guid id)
         {
             var objeto = await _db.GetById(id);
-            objeto.IsDeleted = true;
 
-            objeto.SerializedObject = JsonSerializer.Serialize(objeto);
+            //objeto.SerializedObject = JsonSerializer.Serialize(objeto);
 
             var result = await _db.Delete(objeto);
 

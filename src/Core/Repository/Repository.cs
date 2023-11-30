@@ -45,9 +45,9 @@ namespace Repository
 
         public virtual async Task<T> Create(T entity, CancellationToken cancellationToken = default)
         {
-            DbSet.Add(entity);
+            entity.AddAudit(Auditory(AuditType.Create, entity));
 
-            entity.Audit?.Add(Auditory(AuditType.Create, entity));
+            DbSet.Add(entity);
 
             await Db.SaveChangesAsync();
             return entity;
@@ -57,7 +57,7 @@ namespace Repository
         {
             DbSet.Update(entity);
 
-            entity.Audit?.Add(Auditory(AuditType.Update, entity));
+            entity.AddAudit(Auditory(AuditType.Update, entity));
 
             await Db.SaveChangesAsync();
             return entity;
@@ -65,9 +65,11 @@ namespace Repository
 
         public virtual async Task<T> Delete(T entity, CancellationToken cancellationToken = default)
         {
+            entity.DeleteEntity();
+
             DbSet.Update(entity);
 
-            entity.Audit?.Add(Auditory(AuditType.Delete, entity));
+            entity.AddAudit(Auditory(AuditType.Delete, entity));
 
             await Db.SaveChangesAsync();
             return entity;
@@ -80,13 +82,7 @@ namespace Repository
 
         private Audit Auditory(AuditType type, T entity)
         {
-            return new Audit()
-            {
-                CreateDate = DateTime.Now,
-                CreateUser = Guid.NewGuid(),
-                Type = type,
-                State = entity.SerializedObject,
-            };
+            return new Audit(type, Guid.NewGuid(), entity.SerializedEntity());
         }
     }
 }

@@ -4,10 +4,19 @@ namespace Model
 {
     public class Audit
     {
-        public Guid Id { get; set; }
-        public AuditType Type { get; set; }
-        public Guid CreateUser { get; set; }
-        public DateTime CreateDate { get; set; }
-        public string State { get; set; } = string.Empty;
+        public Audit(AuditType type, Guid createUser, string state)
+        {
+            Id = Guid.NewGuid();
+            Type = type;
+            CreateUser = createUser;
+            CreateDate = DateTime.UtcNow;
+            State = state;
+        }
+
+        public Guid Id { get; private set; }
+        public AuditType Type { get; private set; }
+        public Guid CreateUser { get; private set; }
+        public DateTime CreateDate { get; private set; }
+        public string State { get; private set; }
     }
 }
