@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Rafael Veneroso Morici",
+  "classifications": [ "Web", "Test", "Service" ],
+  "identity": "DesafioBalte.Service.Template",
+  "name": "Desafio Balta Service Template",
+  "shortName": "BaltaServiceTemplate",
+  "sourceName": "Template",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true
+}
